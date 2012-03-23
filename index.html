@@ -1,0 +1,426 @@
+<!doctype html>
+<html>
+<head>
+<title>CSS3</title>
+<style>
+body {
+ height:100%;
+ box-sizing:border-box;
+ -webkit-box-sizing:border-box;
+ padding:0px;
+ margin:0px;
+ font-family:sans-serif;
+}
+#experiment {
+ -webkit-perspective: 800; 
+ -webkit-perspective-origin: 300px 300px;
+ -moz-perspective: 800px; 
+ -moz-perspective-origin: 300px 300px;
+ position:absolute;
+ width:100%;
+ height:100%;
+}
+
+body > * {
+-webkit-touch-callout: none;
+-webkit-user-select: none;
+-khtml-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+-o-user-select: none;
+user-select: none;
+}
+a {
+-webkit-touch-callout: auto !important;
+-webkit-user-select: auto !important;
+-khtml-user-select: auto !important;
+-moz-user-select: auto !important;
+-ms-user-select: auto !important;
+-o-user-select: auto !important;
+user-select: auto !important;
+z-index:999999;
+}
+
+.cube {
+ position: relative;
+ height: 600px;
+ width: 600px;
+ -webkit-transform-style: preserve-3d;
+ -webkit-transition: -webkit-transform 2s linear;
+ -moz-transition: -moz-transform 2s linear;
+ -moz-transform-style: preserve-3d;
+ -moz-transform:translateZ(-300px);
+ -webkit-transform:translateZ(-300px);
+}
+
+.face {
+ position: absolute;
+ padding: 20px;
+ background-color: rgba(0,66,66, 0.85);
+ font-size:150%;
+ line-height: 150%;
+ color: #fff;
+ border: 1px solid #555;
+ margin:0px;
+ overflow:hidden;
+ width:560px;
+ height:560px;
+ text-align:justify;
+}   
+
+.cube .one  {
+ -webkit-transform: rotateX(90deg) translateZ(300px);
+ -moz-transform: rotateX(90deg) translateZ(300px);
+}
+
+.cube .two {
+ -webkit-transform: translateZ(300px);
+ -moz-transform: translateZ(300px);
+}
+
+.cube .three {
+ -webkit-transform: rotateY(90deg) translateZ(300px);
+ -moz-transform: rotateY(90deg) translateZ(300px);
+}
+
+.cube .four {
+ -webkit-transform: rotateY(180deg) translateZ(300px);
+ -moz-transform: rotateY(180deg) translateZ(300px);
+}
+
+.cube .five {
+ -webkit-transform: rotateY(-90deg) translateZ(300px);
+ -moz-transform: rotateY(-90deg) translateZ(300px);
+}
+
+.cube .six {
+ -webkit-transform: rotateX(-90deg) translateZ(300px);
+ -moz-transform: rotateX(-90deg) translateZ(300px);
+}
+.ingrid {
+ text-align:center;
+ height:200px;
+ width:300px;
+ line-height:200px;
+ border:1px solid black;
+ background-image: linear-gradient(right bottom, rgb(86,118,173) 30%, rgb(180,187,212) 70%);
+ background-image: -o-linear-gradient(right bottom, rgb(86,118,173) 30%, rgb(180,187,212) 70%);
+ background-image: -moz-linear-gradient(right bottom, rgb(86,118,173) 30%, rgb(180,187,212) 70%);
+ background-image: -webkit-linear-gradient(right bottom, rgb(86,118,173) 30%, rgb(180,187,212) 70%);
+ background-image: -ms-linear-gradient(right bottom, rgb(86,118,173) 30%, rgb(180,187,212) 70%);
+
+ background-image: -webkit-gradient(
+	linear,
+	right bottom,
+	left top,
+	color-stop(0.3, rgb(86,118,173)),
+	color-stop(0.7, rgb(180,187,212))
+ );
+ opacity:0.5;
+ -webkit-transition: -webkit-transform 2s linear;
+ -moz-transition: -moz-transform 2s linear;
+ -moz-border-radius:5px;
+ -webkit-border-radius:5px;
+ border-radius:5px;
+}
+#tot {
+ -webkit-transition: opacity 1s linear;
+ -moz-transition: opacity 1s linear;
+ opacity:0;
+}
+@keyframes anim {
+ 0% { transform:rotateY(-15deg); }
+ 50% { transform:rotateY(15deg); }
+ 100% { transform:rotateY(-15deg); }
+}
+@-webkit-keyframes anim {
+ 0% { -webkit-transform:rotateY(-15deg); }
+ 10% { -webkit-transform:rotateY(0deg); }
+ 40% { -webkit-transform:rotateY(0deg); }
+ 50% { -webkit-transform:rotateY(15deg); }
+ 60% { -webkit-transform:rotateY(0deg); }
+ 90% { -webkit-transform:rotateY(0deg); }
+ 100% { -webkit-transform:rotateY(-15deg); }
+}
+@-moz-keyframes anim {
+ 0% { -moz-transform:rotateY(-15deg); }
+ 10% { -moz-transform:rotateY(0deg); }
+ 40% { -moz-transform:rotateY(0deg); }
+ 50% { -moz-transform:rotateY(15deg); }
+ 60% { -moz-transform:rotateY(0deg); }
+ 90% { -moz-transform:rotateY(0deg); }
+ 100% { -moz-transform:rotateY(-15deg); }
+}
+
+#grid {
+ -moz-animation:anim 5s infinite;
+ -webkit-animation:anim 5s infinite;
+ -webkit-transform-style: preserve-3d;
+ width:650px;
+}
+
+.ingrid:hover,.selected {
+ opacity:0.99;
+}
+.taula {
+ border:none;
+ border-spacing:15px;
+ margin:0 auto;
+}
+</style>
+</head>
+<body>
+<div style="-webkit-transform: rotate(-90deg);-moz-transform: rotate(-90deg);transform:rotate(-90deg);text-align:center;font-size:45px;display:none;" id="tmb">CSS3 presentation</div>
+<div id="nav" style="display:none;z-index:9999;">
+<img src="enrere.svg" style="position:fixed;bottom:0px;right:0px;cursor:pointer;z-index:9999;" onclick="pres.hideCube();">
+</div>
+<div id="grid" class="animat">
+
+</div>
+<div style="position:fixed;top:50%;margin-top:-300px;left:50%;margin-left:-300px;">
+<div id="tot" style="position:relative;z-index:1001;">
+
+</div>
+</div>
+<script type="text/javascript">
+Function.prototype.bind = function(scope) {
+  var _function = this;
+  
+  return function() {
+    return _function.apply(scope, arguments);
+  }
+}
+
+Element.prototype.css = function (dict) {
+  for (var i in dict) {
+    if (i == "transform") {
+      var todo = ["transform","webkitTransform","MozTransform"];
+    } else {
+      var todo = [i];
+    }
+    if (i=="ptransformY") {
+      var cur = parseFloat(this.getAttribute("data-rotatey"));
+      if (!cur) var cur = 0;
+      this.style.webkitTransform = "rotateY("+(dict[i]+cur)+"deg)";
+      this.setAttribute("data-rotatey",(dict[i]+cur))
+      delete dict[i];
+    }
+    for (var y=0; y<todo.length; y++) {
+      this.style[todo[y]] = dict[i];
+    }
+  }
+};
+Element.prototype.hasClass = function (cls) {
+  return this.className.match(new RegExp('(\\s|^)'+cls+'(\\s|$)'));
+}
+
+Element.prototype.addClass = function (cls) {
+  if (!this.hasClass(cls)) this.className += " "+cls;
+}
+
+Element.prototype.removeClass = function (ele,cls) {
+  if (this.hasClass(cls)) {
+      var reg = new RegExp('(\\s|^)'+cls+'(\\s|$)');
+      this.className = this.className.replace(reg,' ');
+  }
+}
+
+Number.prototype.mod = function(n) {
+  return ((this%n)+n)%n;
+}
+
+pres = {};
+
+pres.adjustheight = function () {
+  var t = document.getElementById("grid");
+  t.style.marginTop = -(t.offsetHeight/2)+"px";
+  t.style.marginLeft = -(t.offsetWidth/2)+"px";
+  t.style.top = '50%';
+  t.style.left = '50%';
+  t.style.position = 'absolute';
+  var t2 = document.getElementById("tmb");
+  t2.style.display = "block";
+  t2.style.marginTop = -(t2.offsetHeight/2)+"px";
+  t2.style.top = '50%';
+  t2.style.position = 'absolute';
+  t2.style.marginLeft = -(t2.offsetWidth/3)+"px";
+};
+
+window.onresize = pres.adjustheight;
+pres.hideCube = function () {
+  document.getElementById("tot").style.opacity = 0;
+  setTimeout(function () { document.getElementById("tot").innerHTML = ""; }, 2100);
+  var all = document.getElementsByClassName("ingrid");
+  for (var i=0; i<all.length; i++) {
+    all[i].className = "ingrid";
+  }
+  document.getElementById("nav").style.display = "none";
+  document.getElementById("grid").style.pointerEvents = "auto";
+};
+pres.showCube = function (n) {
+  document.getElementById("grid").style.pointerEvents = "none";
+  pres.reset();
+  document.getElementById("nav").style.display = "block";
+  var all = document.getElementsByClassName("ingrid");
+  for (var i=0; i<all.length; i++) {
+    if (parseInt(all[i].getAttribute("data-num"))!=n) all[i].className = "ingrid";
+  }
+  var ex = document.createElement("div");
+  ex.id = "experiment";
+  var cube = document.createElement("div");
+  cube.className = "cube";
+  ex.appendChild(cube);
+  for (var i=0; i<pres.data[n].length; i++) {
+    var face = pres.data[n][i];
+    var f = document.createElement("div");
+    var nu = ["one","two","three","four","five","six"];
+    f.className = "face "+nu[i];
+    f.innerHTML = face.childNodes[0].nodeValue;
+    cube.appendChild(f);
+  }
+  document.getElementById("tot").innerHTML = "";
+  document.getElementById("tot").appendChild(ex);
+  document.getElementById("tot").style.opacity = 1;
+};
+
+pres.showGrid = function () {
+  var g = document.getElementById("grid");
+  var str = document.createElement("table");
+  str.className = "taula";
+  var perrow = 2;
+  var i=0;
+  for (var y=0; y<Math.ceil(pres.names.length/perrow);y++) {console.log(Math.ceil(pres.names.length/perrow));
+   var tr = document.createElement("tr");
+   str.appendChild(tr);
+   for (var cur=0; cur<perrow; i++) {console.log(i);
+    if (!pres.names[i]) break;
+    var t = document.createElement("td");
+    t.setAttribute("data-num",i);
+    t.className = "ingrid";
+    t.appendChild(document.createTextNode(pres.names[i]));
+    t.onclick = function () { 
+        this.className = "ingrid selected"; pres.showCube(parseInt(this.getAttribute("data-num"))); }.bind(t);
+    tr.appendChild(t);
+    cur += 1;
+   }
+  }
+  g.appendChild(str);
+}
+
+pres.parseXML = function () {
+  pres.cubes = pres.xml.getElementsByTagName("cube");
+  pres.data = [];
+  pres.names = [];
+  for (var i=0; i<pres.cubes.length; i++) {
+    var faces = pres.cubes[i].getElementsByTagName("face");
+    pres.data[pres.data.length] = [];
+    for (var y=0; y<faces.length; y++) {
+      pres.data[pres.data.length-1][y] = faces[y];
+    }
+    pres.names[pres.names.length] = pres.cubes[i].getElementsByTagName("name")[0].childNodes[0].nodeValue;
+  }
+  pres.showGrid();
+  pres.adjustheight();
+  //pres.showCube(0);
+};
+
+pres.loadXML = function (url) {
+  var xmlhttp = new XMLHttpRequest();
+  xmlhttp.onreadystatechange = function () {
+    if (xmlhttp.readyState == 4) {
+      pres.xml = xmlhttp.responseXML;
+      pres.parseXML();
+    }
+  };
+  xmlhttp.open("GET", url, true);
+  xmlhttp.overrideMimeType('text/xml');
+  xmlhttp.send(null);
+
+}
+
+pres.begin = false;
+
+pres.mouseDown = function (e) {
+  var all = document.getElementsByClassName("face");
+  for (var i=0; i<all.length; i++) {
+    all[i].addClass("noselect");
+  }
+  var x = (e.pageX != undefined) ? e.pageX : e.touches[0].pageX;
+  var y = (e.pageY != undefined) ? e.pageY : e.touches[0].pageY;
+  pres.begin = [x,y];
+}
+
+pres.mouseUp = function (e) {
+  console.log(e);
+  var x = (e.pageX != undefined) ? e.pageX : e.touches[0].pageX;
+  var y = (e.pageY != undefined) ? e.pageY : e.touches[0].pageY;
+  console.log(pres.begin,[x,y]);
+  if (pres.begin) {
+    if ((pres.begin[0]-x)>100) {
+      pres.keyDown({which:pres.arrow.right});
+    } else if ((pres.begin[0]-x)<-100) {
+      pres.keyDown({which:pres.arrow.left});
+    }
+    if (((pres.begin[1]-y)>100)) {
+      pres.keyDown({which:pres.arrow.up});
+    } else if ((pres.begin[1]-y)<-100) {
+      pres.keyDown({which:pres.arrow.down});
+    }
+  }
+  var all = document.getElementsByClassName("face");
+  for (var i=0; i<all.length; i++) {
+    all[i].removeClass("noselect");
+  }
+}
+
+pres.arrow = {left: 37, up: 38, right: 39, down: 40 };
+
+pres.reset = function () {
+  pres.cRotateY = pres.cRotateX = pres.cRotateZ = 0;
+}
+pres.keyDown = function (e) {
+  var keyCode = e.keyCode || e.which;
+
+  switch (keyCode) {
+    case pres.arrow.left:console.log("left");
+      pres.cRotateY += 90;
+    break;
+    case pres.arrow.up:
+      if ((pres.cRotateY/360) != Math.round(pres.cRotateY/360)) {
+        pres.cRotateY = Math.round(pres.cRotateY/360)*360;
+      }
+
+      pres.cRotateX += 90;
+      //..
+    break;
+    case pres.arrow.right:
+      pres.cRotateY -= 90;
+    break;
+    case pres.arrow.down:
+      if ((pres.cRotateY/360) != Math.round(pres.cRotateY/360)) {
+        pres.cRotateY = Math.round(pres.cRotateY/360)*360;
+      }
+      pres.cRotateX -= 90;
+      //..
+    break;
+  }
+  var all = document.getElementsByClassName("cube");
+  for (var i=0; i<all.length; i++) {
+    all[i].css({transform:"translateZ(-300px) rotateY("+pres.cRotateY+"deg) rotateX("+pres.cRotateX+"deg) rotateZ("+pres.cRotateZ+"deg)"});
+  }
+};
+
+pres.loadXML("pres.xml");
+
+pres.cRotateY = 0;
+pres.cRotateX = 0;
+pres.cRotateZ = 0;
+
+window.onkeydown = pres.keyDown;
+window.onmousedown = pres.mouseDown;
+window.onmouseup = pres.mouseUp;
+window.ontouchstart = pres.mouseDown;
+window.ontouchend = pres.mouseUp;
+</script>
+</body>
+</html>

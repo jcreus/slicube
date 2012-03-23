@@ -1,0 +1,156 @@
+<presentation>
+<cube>
+<name>Wow! What's that?</name>
+<face><![CDATA[
+<h2>Nothing here.</h2>
+It's easy to get lost.
+]]>
+</face>
+<face><![CDATA[
+<h2>Wow! What's that?</h2>
+<ul>
+<li>A presentation system.</li>
+<li>Kinda LibreOffice Impress or PowerPoint, but online with CSS3 transforms!</li>
+<li>An entry for the Dev Derby Contest.</li>
+</ul>
+By now, use mouse gestures or the keyboard to move. We'll learn more about that.
+]]>
+</face>
+<face><![CDATA[
+<h2>How to use it?</h2>
+<b>To navigate:</b> You can use either:
+<ul><li>mouse gestures, clicking and "dragging". Just like you'd do with a real cube.</li><li>The keyboard arrows.</li></ul>
+<b>To create it:</b> That's in another slide, sorry.
+]]>
+</face>
+<face><![CDATA[
+<h2>I just spotted a bug!</h2>
+This is free software, be bold! You can try to fix it, and send me a patch (if you want) or fill an issue at github (see below). At least on my Firefox, it is a little slow; in Chrome it's smoother. Not my fault, maybe this is a thing of the old computer I'm writing from.
+<br><br><br><ul><li><a target="_blank" style="color:white;" href="https://github.com/jcreus/slicube">Slicube at Github</a></ul></li>
+]]>
+</face>
+<face><![CDATA[
+<p>
+<h2>What's that color?</h2>
+Slashdot green. The bottom part of the article gradient.
+<h2>How is it called?</h2>
+Hmm I don't know. Maybe <i>Slicube</i>? Slide-cube.
+</p>
+]]>
+</face>
+<face><![CDATA[
+<h2>Nothing here.</h2>
+It's easy to get lost.
+]]>
+</face>
+</cube>
+
+<cube>
+<name>The Slicube Format</name>
+<face><![CDATA[
+<h2>Nothing here.</h2>
+It's easy to get lost.
+]]>
+</face>
+<face><![CDATA[
+<h2>The Slicube Format</h2>
+<h3>Or how to create other slideshows like this one.</h3>
+<ul>
+<li>XML-based.</li>
+<li>Four tags: presentation, cube, name, and face.</li>
+</ul>
+]]>
+</face>
+<face><![CDATA[
+<h2>The opening tag</h2>
+Simply <tt>presentation</tt>. It opens and closes the document. Easy, huh?
+]]>
+</face>
+<face><![CDATA[
+<h2>The cube tag</h2>
+One for each cube. As easy as <tt>cube</tt>, with a child <tt>name</tt> with the name of that cube, and with six children <tt>face</tt> which represent each face.
+<p><b>Tip:</b> To know the order of the face tags, the best way is "trial-and-error".</p>
+]]>
+</face>
+<face><![CDATA[
+<h2>What's in the face?</h2>
+Plain HTML. It's better when enclosed inside CDATA.
+]]>
+</face>
+<face><![CDATA[
+<h2>Nothing here.</h2>
+It's easy to get lost.
+]]>
+</face>
+</cube>
+<cube>
+<name>How it works</name>
+<face><![CDATA[
+<h2>Nothing here.</h2>
+It's easy to get lost.
+]]>
+</face>
+<face><![CDATA[
+<h2>Only standards</h2>
+<ul>
+<li>HTML(5)</li>
+<li>JavaScript</li>
+<li><b>CSS3:</b> animations, transitions, and CSS transforms.</li>
+</ul>
+]]>
+</face>
+<face><![CDATA[
+<h2>The HTML5 part</h2>
+The main difference, which allows it to be HTML5, is the fact that it has a <tt>doctype html</tt> tag. No canvas, or HTML5-specific tags (as far as I know).
+]]>
+</face>
+<face><![CDATA[
+<h2>JavaScript</h2>
+Used to handle user interaction, basically. It parses the XML document, renders it, etc.
+]]>
+</face>
+<face><![CDATA[
+<h2>CSS3</h2>
+To create the cubes (via 3D transforms), the <del>fancy</del> could-be-improved grid showing the slides, and style the document. Also, for the smooth transitions.
+]]>
+</face>
+<face><![CDATA[
+<h2>Nothing here.</h2>
+It's easy to get lost.
+]]>
+</face>
+</cube>
+<cube>
+<name>That's all, folks!</name>
+<face><![CDATA[
+<h2>Nothing here.</h2>
+It's easy to get lost.
+]]>
+</face>
+<face><![CDATA[
+<h2>That's all, folks!</h2>
+I don't think I got anything else to say. Thanks for waiting until the end (I hope).
+]]>
+</face>
+<face><![CDATA[
+<h2>That's all, folks!</h2>
+I don't think I got anything else to say. Thanks for waiting until the end (I hope).
+]]>
+</face>
+<face><![CDATA[
+<h2>That's all, folks!</h2>
+I don't think I got anything else to say. Thanks for waiting until the end (I hope).
+]]>
+</face>
+<face><![CDATA[
+<h2>That's all, folks!</h2>
+I don't think I got anything else to say. Thanks for waiting until the end (I hope).
+]]>
+</face>
+<face><![CDATA[
+<h2>Nothing here.</h2>
+It's easy to get lost.
+]]>
+</face>
+</cube>
+</presentation>
