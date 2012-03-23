@@ -100,7 +100,7 @@ z-index:999999;
 .ingrid {
  text-align:center;
  height:200px;
- width:300px;
+ width:280px;
  line-height:200px;
  border:1px solid black;
  background-image: linear-gradient(right bottom, rgb(86,118,173) 30%, rgb(180,187,212) 70%);
@@ -156,7 +156,7 @@ z-index:999999;
  -moz-animation:anim 5s infinite;
  -webkit-animation:anim 5s infinite;
  -webkit-transform-style: preserve-3d;
- width:650px;
+ width:610px;
 }
 
 .ingrid:hover,.selected {
@@ -256,9 +256,11 @@ pres.hideCube = function () {
   }
   document.getElementById("nav").style.display = "none";
   document.getElementById("grid").style.pointerEvents = "auto";
+  pres.shown = false;
 };
+pres.shown = false;
 pres.showCube = function (n) {
-  document.getElementById("grid").style.pointerEvents = "none";
+  pres.shown = true;
   pres.reset();
   document.getElementById("nav").style.display = "block";
   var all = document.getElementsByClassName("ingrid");
@@ -298,8 +300,8 @@ pres.showGrid = function () {
     t.setAttribute("data-num",i);
     t.className = "ingrid";
     t.appendChild(document.createTextNode(pres.names[i]));
-    t.onclick = function () { 
-        this.className = "ingrid selected"; pres.showCube(parseInt(this.getAttribute("data-num"))); }.bind(t);
+    t.onclick = function () { if (!pres.shown) { 
+        document.getElementById("grid").style.pointerEvents = "none"; this.className = "ingrid selected"; pres.showCube(parseInt(this.getAttribute("data-num"))); }}.bind(t);
     tr.appendChild(t);
     cur += 1;
    }
