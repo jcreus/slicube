@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-<title>CSS3</title>
+<title>Slicube</title>
 <style>
 body {
  height:100%;
@@ -225,10 +225,6 @@ Element.prototype.removeClass = function (ele,cls) {
   }
 }
 
-Number.prototype.mod = function(n) {
-  return ((this%n)+n)%n;
-}
-
 pres = {};
 
 pres.adjustheight = function () {
@@ -291,10 +287,10 @@ pres.showGrid = function () {
   str.className = "taula";
   var perrow = 2;
   var i=0;
-  for (var y=0; y<Math.ceil(pres.names.length/perrow);y++) {console.log(Math.ceil(pres.names.length/perrow));
+  for (var y=0; y<Math.ceil(pres.names.length/perrow);y++) {
    var tr = document.createElement("tr");
    str.appendChild(tr);
-   for (var cur=0; cur<perrow; i++) {console.log(i);
+   for (var cur=0; cur<perrow; i++) {
     if (!pres.names[i]) break;
     var t = document.createElement("td");
     t.setAttribute("data-num",i);
@@ -323,7 +319,6 @@ pres.parseXML = function () {
   }
   pres.showGrid();
   pres.adjustheight();
-  //pres.showCube(0);
 };
 
 pres.loadXML = function (url) {
@@ -353,10 +348,8 @@ pres.mouseDown = function (e) {
 }
 
 pres.mouseUp = function (e) {
-  console.log(e);
   var x = (e.pageX != undefined) ? e.pageX : e.touches[0].pageX;
   var y = (e.pageY != undefined) ? e.pageY : e.touches[0].pageY;
-  console.log(pres.begin,[x,y]);
   if (pres.begin) {
     if ((pres.begin[0]-x)>100) {
       pres.keyDown({which:pres.arrow.right});
@@ -384,7 +377,7 @@ pres.keyDown = function (e) {
   var keyCode = e.keyCode || e.which;
 
   switch (keyCode) {
-    case pres.arrow.left:console.log("left");
+    case pres.arrow.left:
       pres.cRotateY += 90;
     break;
     case pres.arrow.up:
@@ -393,7 +386,6 @@ pres.keyDown = function (e) {
       }
 
       pres.cRotateX += 90;
-      //..
     break;
     case pres.arrow.right:
       pres.cRotateY -= 90;
@@ -403,7 +395,6 @@ pres.keyDown = function (e) {
         pres.cRotateY = Math.round(pres.cRotateY/360)*360;
       }
       pres.cRotateX -= 90;
-      //..
     break;
   }
   var all = document.getElementsByClassName("cube");
